@@ -18,7 +18,12 @@ public class Controller {
 
     @FXML
     public void buttonClick(){
-        label1.setText(poleTekstowe.getText());
+        if(poleTekstowe.getText().trim().length()==0){
+            label1.setText("Nothing");
+        }else{
+            label1.setText(poleTekstowe.getText());
+        }
+
     }
 
 }
