@@ -5,16 +5,12 @@ import com.student.jk.controller.Utils.LoaderDataBase;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
-import java.time.Duration;
-import java.time.Instant;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 
 
@@ -32,7 +28,10 @@ public class Controller implements Initializable {
     ToggleGroup group;
 
     @FXML
-    public void loadFromFile() throws Exception {
+    Button computeB;
+
+    @FXML
+    public void loadFromFile() throws FileNotFoundException {
         File file = LoaderDataBase.fileChooser();
         List<String> listOfLines = LoaderDataBase.getStringListFromFile(file);
         acerMatrix = LoaderDataBase.makeMatrix("Acer", listOfLines);
@@ -41,6 +40,7 @@ public class Controller implements Initializable {
         noFeatures.setText(String.valueOf(acerMatrix[0].length));
         noAcer.setText(String.valueOf(acerMatrix.length));
         noQuercus.setText(String.valueOf(quercusMatrix.length));
+        computeB.setDisable(false); //odblokowanie przycisku compute po zaladowaniu bazy
     }
 
     @FXML

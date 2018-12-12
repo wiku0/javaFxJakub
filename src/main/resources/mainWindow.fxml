@@ -37,7 +37,7 @@
                            </toggleGroup>
                         </RadioButton>
                         <RadioButton fx:id="radioButtonFisher" layoutX="113.0" layoutY="213.0" mnemonicParsing="false" selected="true" text="Fisher" toggleGroup="$group" AnchorPane.leftAnchor="115.0" />
-                        <Button layoutX="220.0" layoutY="167.0" mnemonicParsing="false" onAction="#computeButton" text="Compute" />
+                        <Button fx:id="computeB" disable="true" layoutX="220.0" layoutY="167.0" mnemonicParsing="false" onAction="#computeButton" text="Compute" />
                         <TextArea fx:id="textArea" editable="false" layoutX="426.0" layoutY="21.0" prefHeight="292.0" prefWidth="257.0" />
                      </children>
                   </AnchorPane>

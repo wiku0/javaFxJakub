@@ -29,7 +29,7 @@ public class LoaderDataBase {
         return list;
     }
 
-    public static double[][] makeMatrix(String type, List<String> listOfLines) throws Exception {
+    public static double[][] makeMatrix(String type, List<String> listOfLines){
         String[] array = listOfLines.stream().filter(s -> s.contains(type)).toArray(String[]::new); //utworzenie tablicy stringow odpowiedniej klasy
         double[][] matrix = new double[array.length][64]; //utworzenie tablicy dwuwymiarowej
         for (int i = 0; i < array.length; i++) {
