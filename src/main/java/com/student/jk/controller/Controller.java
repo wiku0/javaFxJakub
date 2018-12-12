@@ -18,7 +18,6 @@ public class Controller implements Initializable {
     double[][] acerMatrix;
     double[][] quercusMatrix;
 
-
     @FXML
     ComboBox noOfFeatures;
 
@@ -31,21 +30,23 @@ public class Controller implements Initializable {
     @FXML
     public void loadFromFile() throws FileNotFoundException {
         File file = LoaderDataBase.fileChooser();
-        List<String> listOfLines = LoaderDataBase.getStringListFromFile(file);
-        acerMatrix = LoaderDataBase.makeMatrix("Acer", listOfLines);
-        quercusMatrix = LoaderDataBase.makeMatrix("Quercus", listOfLines);
-        computeB.setDisable(false); //odblokowanie przycisku compute po zaladowaniu bazy
+        if (file!=null&&file.isFile()) {
+            List<String> listOfLines = LoaderDataBase.getStringListFromFile(file);
+            acerMatrix = LoaderDataBase.makeMatrix("Acer", listOfLines);
+            quercusMatrix = LoaderDataBase.makeMatrix("Quercus", listOfLines);
+            computeB.setDisable(false); //odblokowanie przycisku compute po zaladowaniu bazy
+        }
     }
 
     @FXML
-    public void computeButton(){
-        System.out.println(((RadioButton)group.getSelectedToggle()).getText());
+    public void computeButton() {
+        System.out.println(((RadioButton) group.getSelectedToggle()).getText());
         System.out.println(noOfFeatures.getSelectionModel().getSelectedItem());
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        noOfFeatures.getItems().addAll(IntStream.rangeClosed(1,64).mapToObj(Integer::new).toArray());
+        noOfFeatures.getItems().addAll(IntStream.rangeClosed(1, 64).mapToObj(Integer::new).toArray());
         noOfFeatures.getSelectionModel().select(0);
     }
 }

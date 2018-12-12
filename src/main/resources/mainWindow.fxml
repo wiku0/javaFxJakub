@@ -26,18 +26,17 @@
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <Button layoutX="31.0" layoutY="31.0" mnemonicParsing="false" onAction="#loadFromFile" text="Open file" />
-                        <Label layoutX="315.0" layoutY="322.0" text="Number of objects:" AnchorPane.topAnchor="322.0" />
-                        <Label layoutX="335.0" layoutY="410.0" text="Number of objects of class Acer:" AnchorPane.topAnchor="410.0" />
-                        <Label layoutX="329.0" layoutY="366.0" text="Number of features:" AnchorPane.topAnchor="366.0" />
-                        <Label layoutX="335.0" layoutY="452.0" text="Number of objects of class Quercus:" AnchorPane.topAnchor="452.0" />
-                        <ComboBox fx:id="noOfFeatures" layoutX="286.0" layoutY="34.0" prefHeight="25.0" prefWidth="60.0" />
+                        <Label fx:id="noObjects" layoutX="306.0" layoutY="21.0" />
+                        <Label fx:id="noFeatures" layoutX="306.0" layoutY="46.0" />
+                        <Label fx:id="noAcer" layoutX="306.0" layoutY="71.0" />
+                        <ComboBox fx:id="noOfFeatures" layoutX="299.0" layoutY="34.0" prefHeight="25.0" prefWidth="60.0" />
                         <Label layoutX="157.0" layoutY="36.0" text="Feature number:" />
-                        <RadioButton fx:id="radioButtonSFS" layoutX="290.0" layoutY="124.0" mnemonicParsing="false" text="SFS" AnchorPane.leftAnchor="290.0">
+                        <RadioButton fx:id="radioButtonSFS" layoutX="300.0" layoutY="123.0" mnemonicParsing="false" text="SFS" AnchorPane.leftAnchor="300.0">
                            <toggleGroup>
                               <ToggleGroup fx:id="group" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="radioButtonFisher" layoutX="293.0" layoutY="89.0" mnemonicParsing="false" selected="true" text="Fisher" toggleGroup="$group" AnchorPane.leftAnchor="293.0" />
+                        <RadioButton fx:id="radioButtonFisher" layoutX="293.0" layoutY="89.0" mnemonicParsing="false" selected="true" text="Fisher" toggleGroup="$group" AnchorPane.leftAnchor="300.0" />
                         <Button fx:id="computeB" disable="true" layoutX="500.0" layoutY="43.0" mnemonicParsing="false" onAction="#computeButton" text="Compute" />
                         <TextArea fx:id="textArea" editable="false" layoutX="700.0" layoutY="40.0" prefHeight="292.0" prefWidth="257.0" />
                         <Button layoutX="31.0" layoutY="84.0" mnemonicParsing="false" text="Save file" />
