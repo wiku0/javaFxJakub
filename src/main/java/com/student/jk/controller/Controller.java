@@ -18,8 +18,6 @@ public class Controller implements Initializable {
     double[][] acerMatrix;
     double[][] quercusMatrix;
 
-    @FXML
-    Label noObjects, noFeatures, noAcer, noQuercus;
 
     @FXML
     ComboBox noOfFeatures;
@@ -36,10 +34,6 @@ public class Controller implements Initializable {
         List<String> listOfLines = LoaderDataBase.getStringListFromFile(file);
         acerMatrix = LoaderDataBase.makeMatrix("Acer", listOfLines);
         quercusMatrix = LoaderDataBase.makeMatrix("Quercus", listOfLines);
-        noObjects.setText(String.valueOf(acerMatrix.length+quercusMatrix.length));
-        noFeatures.setText(String.valueOf(acerMatrix[0].length));
-        noAcer.setText(String.valueOf(acerMatrix.length));
-        noQuercus.setText(String.valueOf(quercusMatrix.length));
         computeB.setDisable(false); //odblokowanie przycisku compute po zaladowaniu bazy
     }
 
