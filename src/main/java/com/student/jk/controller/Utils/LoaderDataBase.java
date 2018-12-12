@@ -33,23 +33,23 @@ public class LoaderDataBase {
         switch (type) {
 
             case "Acer":
-                String[] acerArr = listOfLines.stream().filter(s -> s.contains("Acer")).toArray(String[]::new);
-                double[][] acerMatrix = new double[acerArr.length][64];
+                String[] acerArr = listOfLines.stream().filter(s -> s.contains("Acer")).toArray(String[]::new); //utworzenie tablicy stringow klasy Acer
+                double[][] acerMatrix = new double[acerArr.length][64]; //utworzenie tablicy dwuwymiarowej
                 for (int i = 0; i < acerArr.length; i++) {
                     String[] features = acerArr[i].split(",");
-                    for (int j = 1; j < 65; j++) {
-                        acerMatrix[i][j-1] = Double.parseDouble(features[j]);
+                    for (int j = 1; j < 65; j++) { // od j = 1, bo j=0 to nazwa klasy
+                        acerMatrix[i][j-1] = Double.parseDouble(features[j]); //dodanie do tabliczy poszczegolnych wartosci. Pierwszam wartosc z tablicy to numer klasy, druga to numer cechy
                     }
                 }
                 return acerMatrix;
 
             case "Quercus":
-                String[] quercusArr = listOfLines.stream().filter(s -> s.contains("Quercus")).toArray(String[]::new);
-                double[][] quercusMatrix = new double[quercusArr.length][64];
+                String[] quercusArr = listOfLines.stream().filter(s -> s.contains("Quercus")).toArray(String[]::new); //utworzenie tablicy stringow klasy Quercus
+                double[][] quercusMatrix = new double[quercusArr.length][64]; //utworzenie tablicy dwuwymiarowej
                 for (int i = 0; i < quercusArr.length; i++) {
                     String[] features = quercusArr[i].split(",");
-                    for (int j = 1; j < 65; j++) {
-                        quercusMatrix[i][j-1] = Double.parseDouble(features[j]);
+                    for (int j = 1; j < 65; j++) { // od j = 1, bo j=0 to nazwa klasy
+                        quercusMatrix[i][j-1] = Double.parseDouble(features[j]); //dodanie do tabliczy poszczegolnych wartosci. Pierwszam wartosc z tablicy to numer klasy, druga to numer cechy
                     }
                 }
                 return quercusMatrix;
