@@ -7,14 +7,20 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 
 public class Controller {
 
     @FXML
-    public void loadFromFile() {
+    public void loadFromFile() throws FileNotFoundException {
         File file = LoaderDataBase.fileChooser();
-        System.out.println(file.getAbsolutePath());
+        List<String> listOfLines = LoaderDataBase.getStringListFromFile(file);
+
     }
 
 }
