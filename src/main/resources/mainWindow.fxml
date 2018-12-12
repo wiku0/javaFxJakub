@@ -8,43 +8,61 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="488.0" prefWidth="732.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.student.jk.controller.Controller">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.student.jk.controller.Controller">
    <children>
       <TabPane layoutX="21.0" layoutY="37.0" prefHeight="423.0" prefWidth="683.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
           <Tab text="Preprocessing">
                <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" text="Select folder" />
+                        <TextArea layoutX="600.0" layoutY="50.0" prefHeight="200.0" prefWidth="300.0" />
+                        <TextArea layoutX="600.0" layoutY="300.0" prefHeight="200.0" prefWidth="300.0" />
+                     </children></AnchorPane>
                </content></Tab>
           <Tab text="Features Selection">
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="14.0" layoutY="43.0" mnemonicParsing="false" onAction="#loadFromFile" text="Select file" />
-                        <Label layoutX="178.0" layoutY="21.0" text="Number of objects:" AnchorPane.topAnchor="21.0" />
-                        <Label layoutX="114.0" layoutY="71.0" text="Number of objects of class Acer:" AnchorPane.topAnchor="71.0" />
-                        <Label layoutX="178.0" layoutY="46.0" text="Number of features:" AnchorPane.topAnchor="46.0" />
-                        <Label layoutX="94.0" layoutY="99.0" text="Number of objects of class Quercus:" AnchorPane.topAnchor="99.0" />
+                        <Button layoutX="31.0" layoutY="31.0" mnemonicParsing="false" onAction="#loadFromFile" text="Open file" />
+                        <Label layoutX="315.0" layoutY="322.0" text="Number of objects:" AnchorPane.topAnchor="322.0" />
+                        <Label layoutX="335.0" layoutY="410.0" text="Number of objects of class Acer:" AnchorPane.topAnchor="410.0" />
+                        <Label layoutX="329.0" layoutY="366.0" text="Number of features:" AnchorPane.topAnchor="366.0" />
+                        <Label layoutX="335.0" layoutY="452.0" text="Number of objects of class Quercus:" AnchorPane.topAnchor="452.0" />
                         <Label fx:id="noObjects" layoutX="306.0" layoutY="21.0" />
                         <Label fx:id="noFeatures" layoutX="306.0" layoutY="46.0" />
                         <Label fx:id="noAcer" layoutX="306.0" layoutY="71.0" />
-                        <Label fx:id="noQuercus" layoutX="306.0" layoutY="99.0" />
-                        <ComboBox fx:id="noOfFeatures" layoutX="115.0" layoutY="167.0" prefHeight="25.0" prefWidth="60.0" />
-                        <Label layoutX="20.0" layoutY="171.0" text="Feature number" />
-                        <RadioButton fx:id="radioButtonSFS" layoutX="119.0" layoutY="250.0" mnemonicParsing="false" text="SFS" AnchorPane.leftAnchor="115.0">
+                        <ComboBox fx:id="noOfFeatures" layoutX="299.0" layoutY="34.0" prefHeight="25.0" prefWidth="60.0" />
+                        <Label layoutX="157.0" layoutY="36.0" text="Feature number:" />
+                        <RadioButton fx:id="radioButtonSFS" layoutX="290.0" layoutY="124.0" mnemonicParsing="false" text="SFS" AnchorPane.leftAnchor="290.0">
                            <toggleGroup>
                               <ToggleGroup fx:id="group" />
                            </toggleGroup>
                         </RadioButton>
-                        <RadioButton fx:id="radioButtonFisher" layoutX="113.0" layoutY="213.0" mnemonicParsing="false" selected="true" text="Fisher" toggleGroup="$group" AnchorPane.leftAnchor="115.0" />
-                        <Button fx:id="computeB" disable="true" layoutX="220.0" layoutY="167.0" mnemonicParsing="false" onAction="#computeButton" text="Compute" />
-                        <TextArea fx:id="textArea" editable="false" layoutX="426.0" layoutY="21.0" prefHeight="292.0" prefWidth="257.0" />
+                        <RadioButton fx:id="radioButtonFisher" layoutX="293.0" layoutY="89.0" mnemonicParsing="false" selected="true" text="Fisher" toggleGroup="$group" AnchorPane.leftAnchor="293.0" />
+                        <Button fx:id="computeB" disable="true" layoutX="500.0" layoutY="43.0" mnemonicParsing="false" onAction="#computeButton" text="Compute" />
+                        <TextArea fx:id="textArea" editable="false" layoutX="700.0" layoutY="40.0" prefHeight="292.0" prefWidth="257.0" />
+                        <Button layoutX="31.0" layoutY="84.0" mnemonicParsing="false" text="Save file" />
                      </children>
                   </AnchorPane>
                </content></Tab>
             <Tab text="Classifiers">
                <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="36.0" layoutY="67.0" mnemonicParsing="false" text="Open file." />
+                        <Button layoutX="36.0" layoutY="131.0" mnemonicParsing="false" text="Save file" />
+                        <Label layoutX="183.0" layoutY="72.0" text="Classifiers:" />
+                        <ComboBox layoutX="262.0" layoutY="67.0" prefWidth="100.0" />
+                        <Label layoutX="224.0" layoutY="136.0" text="k:" />
+                        <ComboBox layoutX="262.0" layoutY="131.0" prefWidth="100.0" />
+                        <Button layoutX="438.0" layoutY="67.0" mnemonicParsing="false" text="Train" />
+                        <Button layoutX="558.0" layoutY="67.0" mnemonicParsing="false" text="Execute" />
+                        <Label layoutX="438.0" layoutY="136.0" text="Training part:" />
+                        <TextField layoutX="550.0" layoutY="131.0" prefHeight="30.0" prefWidth="100.0" />
+                        <TextArea layoutX="709.0" layoutY="47.0" prefHeight="273.0" prefWidth="269.0" />
+                     </children></AnchorPane>
                </content>
             </Tab>
         </tabs>
