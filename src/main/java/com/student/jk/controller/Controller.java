@@ -26,6 +26,9 @@ public class Controller {
         List<String> listOfLines = LoaderDataBase.getStringListFromFile(file);
         acerMatrix = LoaderDataBase.makeMatrix("Acer", listOfLines);
         quercusMatrix = LoaderDataBase.makeMatrix("Quercus", listOfLines);
+
+        System.out.println(acerMatrix.length);
+        System.out.println(quercusMatrix.length);
     }
 
 }
