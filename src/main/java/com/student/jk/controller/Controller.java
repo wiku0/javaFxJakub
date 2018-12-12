@@ -8,6 +8,8 @@ import javafx.stage.FileChooser.ExtensionFilter;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,12 +17,15 @@ import java.util.Scanner;
 
 
 public class Controller {
+    double[][] acerMatrix;
+    double[][] quercusMatrix;
 
     @FXML
-    public void loadFromFile() throws FileNotFoundException {
+    public void loadFromFile() throws Exception {
         File file = LoaderDataBase.fileChooser();
         List<String> listOfLines = LoaderDataBase.getStringListFromFile(file);
-
+        acerMatrix = LoaderDataBase.makeMatrix("Acer", listOfLines);
+        quercusMatrix = LoaderDataBase.makeMatrix("Quercus", listOfLines);
     }
 
 }
