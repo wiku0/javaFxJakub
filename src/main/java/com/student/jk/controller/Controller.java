@@ -14,9 +14,11 @@ public class Controller {
     public void loadFromFile() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().size();
-        fileChooser.setTitle("Select database directory");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")+"/desktop"));
+        fileChooser.setTitle("Select database");
         fileChooser.getExtensionFilters().add(new ExtensionFilter("Dokument tekstowy", "*.txt"));
         File file = fileChooser.showOpenDialog(null);
+        System.out.println(file.getAbsolutePath());
     }
 
 }
