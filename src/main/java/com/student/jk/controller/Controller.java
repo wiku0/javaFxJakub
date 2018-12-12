@@ -29,14 +29,7 @@ public class Controller implements Initializable {
     ComboBox noOfFeatures;
 
     @FXML
-    RadioButton radioButtonSFS,radioButtonFisher;
-
-    @FXML
     ToggleGroup group;
-
-    @FXML
-    TextArea textArea;
-
 
     @FXML
     public void loadFromFile() throws Exception {
