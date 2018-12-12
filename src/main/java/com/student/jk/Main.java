@@ -10,8 +10,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/mainWindow.fxml"));
-        primaryStage.setTitle("SMPD PROJECT BY JAKUB");
-        primaryStage.getIcons().add(new Image("icon.png"));
+        primaryStage.setTitle("SMPD");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

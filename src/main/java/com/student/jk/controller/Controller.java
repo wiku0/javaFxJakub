@@ -14,7 +14,8 @@ public class Controller {
     @FXML
     TextField poleTekstowe;
 
-
+ //   @FXML
+  //  TextField poleTekstowe;
 
     @FXML
     public void buttonClick(){
