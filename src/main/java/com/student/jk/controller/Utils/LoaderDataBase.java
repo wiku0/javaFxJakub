@@ -28,13 +28,13 @@ public class LoaderDataBase {
         return list;
     }
 
-    public static double[][] makeMatrix(String type, List<String> listOfLines){
+    public static double[][] makeMatrix(String type, List<String> listOfLines) {
         String[] array = listOfLines.stream().filter(s -> s.contains(type)).toArray(String[]::new); //utworzenie tablicy stringow odpowiedniej klasy
-        double[][] matrix = new double[array.length][64]; //utworzenie tablicy dwuwymiarowej
+        double[][] matrix = new double[64][array.length]; //utworzenie tablicy dwuwymiarowej
         for (int i = 0; i < array.length; i++) {
             String[] features = array[i].split(",");
-            for (int j = 1; j < 65; j++) { // od j = 1, bo j=0 to nazwa klasy
-                matrix[i][j - 1] = Double.parseDouble(features[j]); //dodanie do tabliczy poszczegolnych wartosci. Pierwszam wartosc z tablicy to numer klasy, druga to numer cechy
+            for (int j = 1; j < features.length; j++) { // od j = 1, bo j=0 to nazwa klasy
+                matrix[j - 1][i] = Double.parseDouble(features[j]); //dodanie do tabliczy poszczegolnych wartosci. Pierwszam wartosc z tablicy to numer klasy, druga to numer cechy
             }
         }
         return matrix;

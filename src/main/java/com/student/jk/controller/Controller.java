@@ -1,6 +1,7 @@
 package com.student.jk.controller;
 
 
+import com.student.jk.controller.Utils.Fisher;
 import com.student.jk.controller.Utils.LoaderDataBase;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,20 +29,32 @@ public class Controller implements Initializable {
     Button computeB;
 
     @FXML
+    TextArea textArea;
+
+    @FXML
     public void loadFromFile() throws FileNotFoundException {
         File file = LoaderDataBase.fileChooser();
-        if (file!=null&&file.isFile()) {
+        if (file != null && file.isFile()) {
             List<String> listOfLines = LoaderDataBase.getStringListFromFile(file);
             acerMatrix = LoaderDataBase.makeMatrix("Acer", listOfLines);
             quercusMatrix = LoaderDataBase.makeMatrix("Quercus", listOfLines);
             computeB.setDisable(false); //odblokowanie przycisku compute po zaladowaniu bazy
+
         }
     }
 
     @FXML
     public void computeButton() {
-        System.out.println(((RadioButton) group.getSelectedToggle()).getText());
-        System.out.println(noOfFeatures.getSelectionModel().getSelectedItem());
+        switch (((RadioButton) group.getSelectedToggle()).getText()) {
+            case ("Fisher"):
+                Fisher fisher = new Fisher(acerMatrix, quercusMatrix, (int) noOfFeatures.getSelectionModel().getSelectedItem());
+                int number = fisher.getNumberOfFeature() + 1;
+                textArea.setText("Numer cechy: " + number + "\nFisher: " + fisher.getFisher());
+                break;
+            case ("SFS"):
+                break;
+        }
+
     }
 
     @Override
