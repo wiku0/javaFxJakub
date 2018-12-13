@@ -48,7 +48,7 @@ public class Controller implements Initializable {
         switch (((RadioButton) group.getSelectedToggle()).getText()) {
             case ("Fisher"):
                 Fisher fisher = new Fisher(acerMatrix, quercusMatrix, (int) noOfFeatures.getSelectionModel().getSelectedItem());
-                int number = fisher.getNumberOfFeature() + 1;
+                int number = fisher.getNumberOfFeature();
                 textArea.setText("Numer cechy: " + number + "\nFisher: " + fisher.getFisher());
                 break;
             case ("SFS"):

@@ -20,8 +20,7 @@ public class Fisher {
         count();
     }
 
-  
-    	
+
     private void count() {
 
         for (int i = 0; i < 64; i++) {
@@ -50,14 +49,14 @@ public class Fisher {
                 odchylenieQuercus[j] = Math.pow(quercusMatrix[i][j] - sredniaKlasyQuercus, 2);
             }
 
-            double sumaOdchylenAcer =0;
-            double sumaOdchylenQuercus =0;
+            double sumaOdchylenAcer = 0;
+            double sumaOdchylenQuercus = 0;
 
-            for(int j=0; j<odchylenieAcer.length;j++){
+            for (int j = 0; j < odchylenieAcer.length; j++) {
                 sumaOdchylenAcer = sumaOdchylenAcer + odchylenieAcer[j];
             }
 
-            for(int j=0; j<odchylenieQuercus.length;j++){
+            for (int j = 0; j < odchylenieQuercus.length; j++) {
                 sumaOdchylenQuercus = sumaOdchylenQuercus + odchylenieQuercus[j];
             }
 
@@ -69,13 +68,13 @@ public class Fisher {
             results.add(fisher);
         }
     }
-    
+
     public double getFisher() {
         return results.stream().mapToDouble(i -> i).max().getAsDouble();
     }
 
     public int getNumberOfFeature() {
-        return results.indexOf(getFisher());
+        return results.indexOf(getFisher()) + 1;
     }
 
 }
