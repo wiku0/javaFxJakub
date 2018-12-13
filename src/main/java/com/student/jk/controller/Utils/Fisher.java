@@ -24,17 +24,49 @@ public class Fisher {
     private void count() {
 
         for (int i = 0; i < acerMatrix.length; i++) {
-            double sredniaKlasyAcer = Arrays.stream(acerMatrix[i]).average().getAsDouble();
-            double sredniaKlasyQuercus = Arrays.stream(quercusMatrix[i]).average().getAsDouble();
 
-            //rozncia wartosci cechy od sredniej potrzebna do wyliczenia odchylenia
-            double[] odchylenieAcer = Arrays.stream(acerMatrix[i]).map(x -> Math.pow(x - sredniaKlasyAcer, 2)).toArray();
-            double[] odchylenieQuercus = Arrays.stream(quercusMatrix[i]).map(x -> Math.pow(x - sredniaKlasyQuercus, 2)).toArray();
+            double sumaAcer = 0;
+            double sumaQuercus = 0;
 
-            double sigmaAcer = Math.sqrt(Arrays.stream(odchylenieAcer).sum() / acerMatrix[i].length);
-            double sigmaQuercus = Math.sqrt(Arrays.stream(odchylenieQuercus).sum() / quercusMatrix[i].length);
+            for (int j = 0; j < acerMatrix[i].length; j++) {
+                sumaAcer = sumaAcer + acerMatrix[i][j];
+            }
+
+            for (int j = 0; j < quercusMatrix[i].length; j++) {
+                sumaQuercus = sumaQuercus + quercusMatrix[i][j];
+            }
+
+            double sredniaKlasyAcer = sumaAcer / acerMatrix[i].length;
+            double sredniaKlasyQuercus = sumaQuercus / quercusMatrix[i].length;
+
+            double[] odchylenieAcer = new double[acerMatrix[i].length];
+            double[] odchylenieQuercus = new double[quercusMatrix[i].length];
+
+            for (int j = 0; j < acerMatrix[i].length; j++) {
+                odchylenieAcer[j] = Math.pow(acerMatrix[i][j] - sredniaKlasyAcer, 2);
+            }
+            for (int j = 0; j < quercusMatrix[i].length; j++) {
+                odchylenieQuercus[j] = Math.pow(quercusMatrix[i][j] - sredniaKlasyQuercus, 2);
+            }
+
+            double sumaOdchylenAcer =0;
+            double sumaOdchylenQuercus =0;
+
+            for(int j=0; j<odchylenieAcer.length;j++){
+                sumaOdchylenAcer = sumaOdchylenAcer + odchylenieAcer[j];
+            }
+
+            for(int j=0; j<odchylenieQuercus.length;j++){
+                sumaOdchylenQuercus = sumaOdchylenQuercus + odchylenieQuercus[j];
+            }
+
+
+
+            double sigmaAcer = Math.sqrt(sumaOdchylenAcer / acerMatrix[i].length);
+            double sigmaQuercus = Math.sqrt(sumaOdchylenQuercus / quercusMatrix[i].length);
 
             double fisher = Math.abs(sredniaKlasyAcer - sredniaKlasyQuercus) / (sigmaAcer + sigmaQuercus);
+
             results.add(fisher);
         }
     }
