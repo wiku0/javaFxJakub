@@ -20,10 +20,11 @@ public class Fisher {
         count();
     }
 
-
+  
+    	
     private void count() {
 
-        for (int i = 0; i < acerMatrix.length; i++) {
+        for (int i = 0; i < 64; i++) {
 
             double sumaAcer = 0;
             double sumaQuercus = 0;
@@ -60,8 +61,6 @@ public class Fisher {
                 sumaOdchylenQuercus = sumaOdchylenQuercus + odchylenieQuercus[j];
             }
 
-
-
             double sigmaAcer = Math.sqrt(sumaOdchylenAcer / acerMatrix[i].length);
             double sigmaQuercus = Math.sqrt(sumaOdchylenQuercus / quercusMatrix[i].length);
 
@@ -70,8 +69,7 @@ public class Fisher {
             results.add(fisher);
         }
     }
-
-
+    
     public double getFisher() {
         return results.stream().mapToDouble(i -> i).max().getAsDouble();
     }
