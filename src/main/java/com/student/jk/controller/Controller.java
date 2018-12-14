@@ -3,6 +3,7 @@ package com.student.jk.controller;
 
 import com.student.jk.controller.Utils.Fisher;
 import com.student.jk.controller.Utils.LoaderDataBase;
+import com.student.jk.controller.Utils.Val;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -10,6 +11,7 @@ import javafx.scene.control.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
@@ -48,8 +50,8 @@ public class Controller implements Initializable {
         switch (((RadioButton) group.getSelectedToggle()).getText()) {
             case ("Fisher"):
                 Fisher fisher = new Fisher(acerMatrix, quercusMatrix, (int) noOfFeatures.getSelectionModel().getSelectedItem());
-                int number = fisher.getNumberOfFeature();
-                textArea.setText("Numer cechy: " + number + "\nFisher: " + fisher.getFisher());
+                Val bestFisher = fisher.getFisher();
+                textArea.setText("Numer cechy: " + Arrays.toString(bestFisher.getFeatures()) + "\nFisher: " + bestFisher.getFisher());
                 break;
             case ("SFS"):
                 break;
