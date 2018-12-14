@@ -41,7 +41,6 @@ public class Controller implements Initializable {
             acerMatrix = LoaderDataBase.makeMatrix("Acer", listOfLines);
             quercusMatrix = LoaderDataBase.makeMatrix("Quercus", listOfLines);
             computeB.setDisable(false); //odblokowanie przycisku compute po zaladowaniu bazy
-
         }
     }
 

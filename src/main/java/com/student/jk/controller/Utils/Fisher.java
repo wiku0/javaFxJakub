@@ -84,18 +84,19 @@ public class Fisher {
 
     }
 
-    private boolean countOnMatrix(List<Double> srednieCechAcer, List<Double> srednieCechQuercus, List<double[]> wartoscCechAcer, List<double[]> wartoscCechQuercus, int[] arrayOfFeatures) {
-        double[][] arrayOfSrednieCechAcer = new double[acerMatrix[0].length][srednieCechAcer.size()];
-        double[][] arrayOfSrednieCechQuercus = new double[quercusMatrix[0].length][srednieCechQuercus.size()];
+    private void countOnMatrix(List<Double> srednieCechAcer, List<Double> srednieCechQuercus, List<double[]> wartoscCechAcer, List<double[]> wartoscCechQuercus, int[] arrayOfFeatures) {
+        double[][] arrayOfSrednieCechAcer = new double[srednieCechAcer.size()][acerMatrix[0].length];
+        double[][] arrayOfSrednieCechQuercus = new double[srednieCechQuercus.size()][quercusMatrix[0].length];
 
         for (int i = 0; i < arrayOfSrednieCechAcer.length; i++) {
             for (int j = 0; j < arrayOfSrednieCechAcer[i].length; j++) {
-                arrayOfSrednieCechAcer[i][j] = srednieCechAcer.get(j);
+                arrayOfSrednieCechAcer[i][j] = srednieCechAcer.get(i);
             }
         }
+
         for (int i = 0; i < arrayOfSrednieCechQuercus.length; i++) {
             for (int j = 0; j < arrayOfSrednieCechQuercus[i].length; j++) {
-                arrayOfSrednieCechQuercus[i][j] = srednieCechQuercus.get(j);
+                arrayOfSrednieCechQuercus[i][j] = srednieCechQuercus.get(i);
             }
         }
 
@@ -113,18 +114,14 @@ public class Fisher {
             arrayOfQuercusFeatures[i] = wartoscCechQuercus.get(i);
         }
 
-        Matrix matrixOfAcerFeatures0 = new Matrix(arrayOfAcerFeatures);
-        Matrix matrixOfQuercusFeatures0 = new Matrix(arrayOfQuercusFeatures);
-
-        Matrix matrixOfAcerFeatures = matrixOfAcerFeatures0.transpose();
-        Matrix matrixOfQuercusFeatures = matrixOfQuercusFeatures0.transpose();
+        Matrix matrixOfAcerFeatures = new Matrix(arrayOfAcerFeatures);
+        Matrix matrixOfQuercusFeatures = new Matrix(arrayOfQuercusFeatures);
 
         Matrix roznicaAcer = matrixOfAcerFeatures.minus(matrixOfSrednieCechyAcer);
         Matrix roznicaQuercus = matrixOfQuercusFeatures.minus(matrixOfSrednieCecnyQuercus);
 
         Matrix matrixKowariancjiAcer = roznicaAcer.times(roznicaAcer.transpose()).times((double) 1 / acerMatrix[0].length);
         Matrix matrixKowariancjiQuercus = roznicaQuercus.times(roznicaQuercus.transpose()).times((double) 1 / quercusMatrix[0].length);
-
 
         double[] srednie = new double[srednieCechAcer.size()];
         for (int i = 0; i < srednieCechAcer.size(); i++) {
@@ -136,10 +133,7 @@ public class Fisher {
 
         double result = wynik / (matrixKowariancjiAcer.det() + matrixKowariancjiQuercus.det());
         results.add(new Val(arrayOfFeatures, result));
-        System.out.println(Arrays.toString(arrayOfFeatures) + "\nFisher: " + result); //wyznacnzik ==0 fisher infinity, cos z macierzami nie tak
-        return true;
     }
-
 
 
     public Val getFisher() {
