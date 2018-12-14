@@ -18,6 +18,7 @@ public class Fisher {
         this.noOfFeatures = noOfFeatures;
         results = new ArrayList<>();
         if (noOfFeatures == 1) count();
+        else count2();
     }
 
     private void count() {
