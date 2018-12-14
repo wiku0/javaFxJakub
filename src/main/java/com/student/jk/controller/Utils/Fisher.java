@@ -18,11 +18,10 @@ public class Fisher {
         this.noOfFeatures = noOfFeatures;
         results = new ArrayList<>();
         if (noOfFeatures == 1) count();
-        else count2();
     }
 
     private void count() {
-        for (int i = 0; i < 64; i++) {
+        for (int i = 0; i < acerMatrix.length; i++) {
             double sumaAcer = 0;
             double sumaQuercus = 0;
             for (int j = 0; j < acerMatrix[i].length; j++) {
@@ -58,7 +57,7 @@ public class Fisher {
 
 
     private void count2() {
-        Combinations combinations = new Combinations(63, noOfFeatures);
+        Combinations combinations = new Combinations(acerMatrix.length, noOfFeatures);
         Iterator iterator = combinations.iterator();
 
         while (iterator.hasNext()) {
@@ -76,9 +75,7 @@ public class Fisher {
                 wartoscCechAcer.add(acerMatrix[arrayOfFeatures[i]]);
                 wartoscCechQuercus.add(quercusMatrix[arrayOfFeatures[i]]);
             }
-
             countOnMatrix(srednieCechAcer, srednieCechQuercus, wartoscCechAcer, wartoscCechQuercus, arrayOfFeatures);
-
         }
 
 
@@ -132,7 +129,7 @@ public class Fisher {
         double wynik = Math.sqrt(Arrays.stream(srednieDoKwadratu).sum());
 
         double result = wynik / (matrixKowariancjiAcer.det() + matrixKowariancjiQuercus.det());
-        results.add(new Val(arrayOfFeatures, result));
+        results.add(new Val(Arrays.stream(arrayOfFeatures).map(i -> i + 1).toArray(), result));
     }
 
 

@@ -29,8 +29,8 @@ public class LoaderDataBase {
     }
 
     public static double[][] makeMatrix(String type, List<String> listOfLines) {
-        String[] array = listOfLines.stream().filter(s -> s.contains(type)).toArray(String[]::new); //utworzenie tablicy stringow odpowiedniej klasy
-        double[][] matrix = new double[64][array.length]; //utworzenie tablicy dwuwymiarowej
+        String[] array = listOfLines.stream().filter(s->s.contains(type)).toArray(String[]::new); //utworzenie tablicy stringow odpowiedniej klasy
+        double[][] matrix = new double[array[0].split(",").length - 1][array.length]; //utworzenie tablicy dwuwymiarowej
         for (int i = 0; i < array.length; i++) {
             String[] features = array[i].split(",");
             for (int j = 1; j < features.length; j++) { // od j = 1, bo j=0 to nazwa klasy
