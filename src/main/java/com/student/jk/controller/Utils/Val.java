@@ -1,8 +1,8 @@
 package com.student.jk.controller.Utils;
 
 public class Val {
-    int[] features;
-    double fisher;
+    private int[] features;
+    private double fisher;
 
     public Val(int[] features, double fisher) {
         this.features = features;

@@ -3,6 +3,7 @@ package com.student.jk.controller;
 
 import com.student.jk.controller.Utils.Fisher;
 import com.student.jk.controller.Utils.LoaderDataBase;
+import com.student.jk.controller.Utils.Sfs;
 import com.student.jk.controller.Utils.Val;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -50,9 +51,12 @@ public class Controller implements Initializable {
             case ("Fisher"):
                 Fisher fisher = new Fisher(acerMatrix, quercusMatrix, (int) noOfFeatures.getSelectionModel().getSelectedItem());
                 Val bestFisher = fisher.getFisher();
-                textArea.setText("Numer cechy: " + Arrays.toString(bestFisher.getFeatures()) + "\nFisher: " + bestFisher.getFisher());
+                textArea.setText("Numer cechy: " + Arrays.toString(Arrays.stream(bestFisher.getFeatures()).map(i -> i + 1).toArray()) + "\nFisher: " + bestFisher.getFisher());
                 break;
             case ("SFS"):
+                Sfs sfs = new Sfs(acerMatrix, quercusMatrix, (int) noOfFeatures.getSelectionModel().getSelectedItem());
+                Val bestFisher0 = sfs.getFisher();
+                textArea.setText("Numer cechy: " + Arrays.toString(Arrays.stream(bestFisher0.getFeatures()).map(i -> i + 1).toArray()) + "\nFisher: " + bestFisher0.getFisher());
                 break;
         }
 
