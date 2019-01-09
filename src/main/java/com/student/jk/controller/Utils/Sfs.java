@@ -36,7 +36,7 @@ public class Sfs {
             for (int j = 0; j < acerMatrix.length; j++) {
                 if (!listOfFeatures.contains(j)) {
                     listOfFeatures.add(j);
-                    int[] arrayOfFeatures = listOfFeatures.stream().mapToInt(Integer::new).toArray();
+                    int[] arrayOfFeatures = listOfFeatures.stream().mapToInt(i -> i).toArray();
 
                     List<Double> srednieCechAcer = new ArrayList<>();
                     List<Double> srednieCechQuercus = new ArrayList<>();
@@ -80,3 +80,4 @@ public class Sfs {
 
 
 }
+

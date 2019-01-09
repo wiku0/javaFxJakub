@@ -1,64 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.layout.AnchorPane?>
-
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.student.jk.controller.Controller">
-   <children>
-      <TabPane layoutX="21.0" layoutY="37.0" prefHeight="423.0" prefWidth="683.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <tabs>
-          <Tab text="Preprocessing">
-               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" text="Select folder" />
-                        <TextArea layoutX="600.0" layoutY="50.0" prefHeight="200.0" prefWidth="300.0" />
-                        <TextArea layoutX="600.0" layoutY="300.0" prefHeight="200.0" prefWidth="300.0" />
-                     </children></AnchorPane>
-               </content></Tab>
-          <Tab text="Features Selection">
-               <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="31.0" layoutY="31.0" mnemonicParsing="false" onAction="#loadFromFile" text="Open file" />
-                        <ComboBox fx:id="noOfFeatures" layoutX="299.0" layoutY="34.0" prefHeight="25.0" prefWidth="60.0" />
-                        <Label layoutX="157.0" layoutY="36.0" text="Feature number:" />
-                        <RadioButton fx:id="radioButtonSFS" layoutX="300.0" layoutY="123.0" mnemonicParsing="false" text="SFS" AnchorPane.leftAnchor="300.0">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="group" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="radioButtonFisher" layoutX="293.0" layoutY="89.0" mnemonicParsing="false" selected="true" text="Fisher" toggleGroup="$group" AnchorPane.leftAnchor="300.0" />
-                        <Button fx:id="computeB" disable="true" layoutX="500.0" layoutY="43.0" mnemonicParsing="false" onAction="#computeButton" text="Compute" />
-                        <TextArea fx:id="textArea" editable="false" layoutX="700.0" layoutY="40.0" prefHeight="292.0" prefWidth="257.0" />
-                        <Button layoutX="31.0" layoutY="84.0" mnemonicParsing="false" text="Save file" />
-                     </children>
-                  </AnchorPane>
-               </content></Tab>
-            <Tab text="Classifiers">
-               <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="36.0" layoutY="67.0" mnemonicParsing="false" text="Open file." />
-                        <Button layoutX="36.0" layoutY="131.0" mnemonicParsing="false" text="Save file" />
-                        <Label layoutX="183.0" layoutY="72.0" text="Classifiers:" />
-                        <ComboBox layoutX="262.0" layoutY="67.0" prefWidth="100.0" />
-                        <Label layoutX="224.0" layoutY="136.0" text="k:" />
-                        <ComboBox layoutX="262.0" layoutY="131.0" prefWidth="100.0" />
-                        <Button layoutX="438.0" layoutY="67.0" mnemonicParsing="false" text="Train" />
-                        <Button layoutX="558.0" layoutY="67.0" mnemonicParsing="false" text="Execute" />
-                        <Label layoutX="438.0" layoutY="136.0" text="Training part:" />
-                        <TextField layoutX="550.0" layoutY="131.0" prefHeight="30.0" prefWidth="100.0" />
-                        <TextArea layoutX="709.0" layoutY="47.0" prefHeight="273.0" prefWidth="269.0" />
-                     </children></AnchorPane>
-               </content>
-            </Tab>
-        </tabs>
-      </TabPane>
-   </children>
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.student.jk.controller.Controller">
+    <children>
+        <TabPane layoutX="21.0" layoutY="37.0" prefHeight="423.0" prefWidth="683.0" tabClosingPolicy="UNAVAILABLE"
+                 AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                 AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab text="Preprocessing">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button layoutX="50.0" layoutY="50.0" mnemonicParsing="false" text="Select folder"/>
+                                <TextArea layoutX="600.0" layoutY="50.0" prefHeight="200.0" prefWidth="300.0"/>
+                                <TextArea layoutX="600.0" layoutY="300.0" prefHeight="200.0" prefWidth="300.0"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Features Selection">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <Button layoutX="31.0" layoutY="31.0" mnemonicParsing="false" onAction="#loadFromFile"
+                                        text="Open file"/>
+                                <ComboBox fx:id="noOfFeatures" layoutX="299.0" layoutY="34.0" prefHeight="25.0"
+                                          prefWidth="60.0"/>
+                                <Label layoutX="157.0" layoutY="36.0" text="Feature number:"/>
+                                <RadioButton fx:id="radioButtonSFS" layoutX="300.0" layoutY="123.0"
+                                             mnemonicParsing="false" text="SFS" AnchorPane.leftAnchor="300.0">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="group"/>
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton fx:id="radioButtonFisher" layoutX="293.0" layoutY="89.0"
+                                             mnemonicParsing="false" selected="true" text="Fisher" toggleGroup="$group"
+                                             AnchorPane.leftAnchor="300.0"/>
+                                <Button fx:id="computeB" disable="true" layoutX="500.0" layoutY="43.0"
+                                        mnemonicParsing="false" onAction="#computeButton" text="Compute"/>
+                                <TextArea fx:id="textArea" editable="false" layoutX="700.0" layoutY="40.0"
+                                          prefHeight="292.0" prefWidth="257.0"/>
+                                <Button layoutX="31.0" layoutY="84.0" mnemonicParsing="false" text="Save file"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="classifiersTab" disable="true" text="Classifiers">
+                    <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="183.0" layoutY="72.0" text="Classifiers:"/>
+                                <ComboBox fx:id="classifiers" layoutX="262.0" layoutY="67.0"
+                                          onAction="#classifiersOnAction" prefWidth="100.0"/>
+                                <Label layoutX="224.0" layoutY="136.0" text="k:"/>
+                                <ComboBox fx:id="kNumbers" disable="true" layoutX="262.0" layoutY="131.0"
+                                          prefWidth="100.0"/>
+                                <Button layoutX="438.0" layoutY="67.0" mnemonicParsing="false" onAction="#trainButton"
+                                        text="Train"/>
+                                <Button fx:id="executeButton" disable="true" layoutX="558.0" layoutY="67.0"
+                                        mnemonicParsing="false" text="Execute"/>
+                                <Label layoutX="438.0" layoutY="136.0" text="Training part:"/>
+                                <TextField fx:id="textFieldTraingPart" layoutX="550.0" layoutY="131.0" prefHeight="30.0"
+                                           prefWidth="100.0"/>
+                                <TextArea layoutX="709.0" layoutY="47.0" prefHeight="273.0" prefWidth="269.0"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
 </AnchorPane>
