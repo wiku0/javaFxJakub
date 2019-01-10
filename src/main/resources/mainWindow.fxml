@@ -60,11 +60,12 @@
                                 <Button layoutX="438.0" layoutY="67.0" mnemonicParsing="false" onAction="#trainButton"
                                         text="Train"/>
                                 <Button fx:id="executeButton" disable="true" layoutX="558.0" layoutY="67.0"
-                                        mnemonicParsing="false" text="Execute"/>
+                                        mnemonicParsing="false" onAction="#executeButtonOnAction" text="Execute"/>
                                 <Label layoutX="438.0" layoutY="136.0" text="Training part:"/>
                                 <TextField fx:id="textFieldTraingPart" layoutX="550.0" layoutY="131.0" prefHeight="30.0"
                                            prefWidth="100.0"/>
-                                <TextArea layoutX="709.0" layoutY="47.0" prefHeight="273.0" prefWidth="269.0"/>
+                                <TextArea fx:id="classifiersTextArea" layoutX="709.0" layoutY="47.0" prefHeight="273.0"
+                                          prefWidth="269.0"/>
                             </children>
                         </AnchorPane>
                     </content>

@@ -1,6 +1,6 @@
 package com.student.jk.controller;
 
-public enum Classifiers {
+public enum ClassifiersEnum {
     NN,
     NM,
     KNM

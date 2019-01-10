@@ -1,6 +1,7 @@
 package com.student.jk.controller;
 
 
+import com.student.jk.controller.Classifiers.NMClassifiers;
 import com.student.jk.controller.Utils.Fisher;
 import com.student.jk.controller.Utils.LoaderDataBase;
 import com.student.jk.controller.Utils.Sfs;
@@ -40,7 +41,7 @@ public class Controller implements Initializable {
     Button computeB, executeButton;
 
     @FXML
-    TextArea textArea;
+    TextArea textArea, classifiersTextArea;
 
     @FXML
     TextField textFieldTraingPart;
@@ -83,7 +84,7 @@ public class Controller implements Initializable {
         noOfFeatures.getItems().addAll(IntStream.rangeClosed(1, 64).mapToObj(Integer::new).toArray());
         noOfFeatures.getSelectionModel().select(0);
 
-        classifiers.getItems().addAll(Classifiers.values());
+        classifiers.getItems().addAll(ClassifiersEnum.values());
         classifiers.getSelectionModel().select(0);
 
         kNumbers.getItems().addAll(3, 5, 7, 9);
@@ -108,29 +109,46 @@ public class Controller implements Initializable {
             }
         }
 
-        acerMatrixParted = new double[acerMatrix.length][acerMatrix.length - acerTrainMatrix.length];
-        quercusMatrixParted = new double[quercusTrainMatrix.length][quercusMatrix.length - quercusTrainMatrix.length];
+        acerMatrixParted = new double[acerMatrix.length][acerMatrix[0].length - acerTrainMatrix[0].length];
+        quercusMatrixParted = new double[quercusTrainMatrix.length][quercusMatrix[0].length - quercusTrainMatrix[0].length];
 
         for (int i = 0; i < acerMatrixParted.length; i++) {
             for (int j = 0; j < acerMatrixParted[0].length; j++) {
-                acerMatrixParted[i][j] = acerMatrix[i][acerTrainMatrix.length + j];
+                acerMatrixParted[i][j] = acerMatrix[i][acerTrainMatrix[0].length + j];
             }
         }
 
         for (int i = 0; i < quercusMatrixParted.length; i++) {
             for (int j = 0; j < quercusMatrixParted[0].length; j++) {
-                quercusMatrixParted[i][j] = quercusMatrix[i][quercusTrainMatrix.length + j];
+                quercusMatrixParted[i][j] = quercusMatrix[i][quercusTrainMatrix[0].length + j];
             }
         }
-
 
         executeButton.setDisable(false);
 
     }
 
     @FXML
+    public void executeButtonOnAction() {
+        switch ((ClassifiersEnum) classifiers.getSelectionModel().getSelectedItem()) {
+            case NM:
+                NMClassifiers nmClassifiers = new NMClassifiers(acerTrainMatrix, quercusTrainMatrix, acerMatrixParted, quercusMatrixParted, featuresSelection.getFeatures());
+                classifiersTextArea.setText("Results for NM Classifier:\nAcer:" + nmClassifiers.getAcerResult() * 100 + "%\nQuercus:" + nmClassifiers.getQuercusResult() * 100 + "%");
+                break;
+            case NN:
+
+                break;
+            case KNM:
+
+                break;
+
+        }
+
+    }
+
+    @FXML
     public void classifiersOnAction() {
-        switch ((Classifiers) classifiers.getSelectionModel().getSelectedItem()) {
+        switch ((ClassifiersEnum) classifiers.getSelectionModel().getSelectedItem()) {
             case NM:
                 kNumbers.setDisable(true);
                 break;
